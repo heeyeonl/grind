@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* style */
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>
+        <button>HTML</button>
+        <button>CSS</button>
+        <button>JavaScript</button>
+      </div>
+      <div>
+        <p>
+          The HyperText Markup Language or HTML is the standard markup language
+          for documents designed to be displayed in a web browser.
+        </p>
+        <p>
+          Cascading Style Sheets is a style sheet language used for describing
+          the presentation of a document written in a markup language such as
+          HTML or XML.
+        </p>
+        <p>
+          JavaScript, often abbreviated as JS, is a programming language that is
+          one of the core technologies of the World Wide Web, alongside HTML and
+          CSS.
+        </p>
+      </div>
+    </div>
+    <script>
+      const paras = Array.from(document.querySelectorAll("p"));
+      paras.forEach((para, idx) => {
+        para.setAttribute("id", idx);
+		if (idx !== 0) {
+			para.style.display = "none";
+		}
+      });
+
+      const buttons = Array.from(document.querySelectorAll("button"));
+      buttons.forEach((button, idx) => {
+        button.setAttribute("id", idx);
+		if (idx === 0) {
+			button.style.backgroundColor = "pink";
+		}
+        button.addEventListener("click", (e) => {
+			const clickedId = parseInt(e.target.id);
+
+			buttons.forEach((button, i) => {
+				button.style.backgroundColor = clickedId === i ? "pink" : "";
+			})
+			
+          	paras.forEach((para, i) => {
+				para.style.display = i === idx ? "block" : "none";
+		  	})
+        });
+      });
+    </script>
+  </body>
+</html>

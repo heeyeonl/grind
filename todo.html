@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width initial-scale=1.0" />
+        <style>
+            /* style */
+        </style>
+    </head>
+    <body>
+        <div>
+            <div>
+                <input type="text" id="input" placeholder="type new task" />
+                <button id="submit">Submit</button>
+            </div>
+            <ul id="todos">
+                <!-- list is created and deleted -->
+            </ul>
+        </div>
+        <script>
+            function LoadTasks() {
+                const saved = localStorage.getItem("tasks");
+                if (!saved) return;
+
+                const tasks = JSON.parse(saved);
+                tasks.forEach(task => {
+                    const inputDummy = { value: task };
+                    AddTask(inputDummy);
+                })
+            }
+
+            function SaveTasks() {
+                const todos = Array.from(document.querySelectorAll("#todos li span")).map(el => el.textContent);
+                localStorage.setItem("tasks", JSON.stringify(todos));
+            }
+
+            function AddTask(task) {
+                if (!task.value.trim()) return;
+
+                const todosEl = document.querySelector("#todos");
+                const liEl = document.createElement("li");
+                const spanEl = document.createElement("span");
+                const buttonEl = document.createElement("button");
+
+                spanEl.textContent = task.value;
+                buttonEl.textContent = "Delete";
+                liEl.appendChild(spanEl);
+                liEl.appendChild(buttonEl);
+                todosEl.appendChild(liEl);
+
+                SaveTasks();
+            }
+
+            // Add new task (button clicked)
+            const buttonEl = document.querySelector("#submit");
+            buttonEl.addEventListener("click", () => {
+                const inputEl = document.querySelector("#input");
+                AddTask(inputEl);
+                inputEl.value = "";
+            });
+
+            // Add new task (enter)
+            const inputEl = document.querySelector("#input");
+            inputEl.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    AddTask(inputEl);
+                    inputEl.value = "";
+                }
+            });
+            
+            const todosEl = document.querySelector("#todos");
+            todosEl.addEventListener("click", (e) => {
+                if (e.target.tagName === "BUTTON") {
+                    e.target.parentNode.remove();
+                    SaveTasks();
+                }
+            });
+
+            document.addEventListener("DOMContentLoaded", LoadTasks);
+
+        </script>
+    </body>
+</html>

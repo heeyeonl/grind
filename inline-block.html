@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Display Comparison</title>
+    <style>
+      .box {
+        padding: 10px;
+        margin: 10px;
+        border: 2px solid steelblue;
+        background-color: lightyellow;
+      }
+
+      .inline {
+        display: inline;
+        background-color: lightcoral;
+      }
+
+      .inline-block {
+        display: inline-block;
+        background-color: lightgreen;
+        width: 120px;
+        height: 80px;
+      }
+
+      .block {
+        display: block;
+        background-color: lightblue;
+        width: 120px;
+        height: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>inline</h2>
+    <span class="box inline">inline 1</span>
+    <span class="box inline">inline 2</span>
+
+    <h2>inline-block</h2>
+    <span class="box inline-block">inline-block 1</span>
+    <span class="box inline-block">inline-block 2</span>
+
+    <h2>block</h2>
+    <div class="box block">block 1</div>
+    <div class="box block">block 2</div>
+  </body>
+</html>

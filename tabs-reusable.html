@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width initial-scale=1.0" />
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            
+        </div>
+
+        <script>
+            const items = [
+                {
+                    name: "HTML",
+                    text: "The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser."
+                },
+                {
+                    name: "CSS",
+                    text: "Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML."
+                },
+                {
+                    name: "JavaScript",
+                    text: "JavaScript, often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS."
+                },
+                {
+                    name: "ETC",
+                    text: "Add more here"
+                }
+            ]
+
+            const defaultIdx = 1;
+            const $container = document.querySelector("#container");
+            const $buttons = [];
+
+            for (const item of items) {
+                const $button = document.createElement("button");
+                $button.textContent = item.name;
+                $buttons.push($button);
+            }
+            
+            const $buttonsContainer = document.createElement("div");
+            $buttons.forEach(button => $buttonsContainer.appendChild(button));
+            $container.appendChild($buttonsContainer);
+
+            const $textContainer = document.createElement("div");
+            $textContainer.textContent = items[defaultIdx].text;
+            $container.appendChild($textContainer);
+
+            $buttons[defaultIdx].style.backgroundColor = "pink";
+            $buttons.forEach((button, idx) => {
+                button.addEventListener("click", () => {
+                    $textContainer.textContent = items[idx].text;
+
+                    $buttons.forEach((btn, i) => {
+                        btn.style.backgroundColor = idx === i ? "pink" : "";
+                    })
+                });
+            })
+        </script>
+    </body>
+</html>
