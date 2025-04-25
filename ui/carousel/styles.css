@@ -8,6 +8,10 @@ body {
     position: relative;
 }
 
+.carousel > ul {
+    margin: 0;
+}
+
 .slide {
     position: absolute;
     inset: 0; /* basically top: 0, right: 0, bottom: 0, left: 0 꽉 채우는것 */
