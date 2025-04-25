@@ -1,0 +1,26 @@
+* {
+    font-family: sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 1rem;
+    margin: 0;
+}
+
+li {
+    font-weight: normal;
+}
+
+.folder {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.folder > ul {
+    display: none;
+}
+
+.folder.clicked > ul {
+    display: block;
+}
