@@ -17,7 +17,7 @@ li {
     font-weight: bold;
 }
 
-.folder > ul {
+.folder ul {
     display: none;
 }
 
