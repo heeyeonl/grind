@@ -26,3 +26,7 @@
     pointer-events: none;
     background-color: pink;
 }
+
+.cell.winner {
+    background-color: lightgreen;
+}
