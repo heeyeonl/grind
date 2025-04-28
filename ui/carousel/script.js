@@ -13,8 +13,9 @@ const images = [
     }
 ];
 
+const $slides = document.querySelector("[data-carousel-slides]");
+
 function initialize() {
-    const $slides = document.querySelector("[data-carousel-slides]");
     images.forEach((img, idx) => {
         const $li = document.createElement("li");
         const $img = document.createElement("img");
@@ -33,9 +34,7 @@ const $buttons = document.querySelectorAll(".carousel-button");
 $buttons.forEach(button => {
     button.addEventListener("click", () => {
         const offset = button.classList.contains("prev") ? -1 : 1;
-        // const $slides = button.closest("[data-carousel-container]").querySelector("[data-carousel-slides");
-        // since there is only one carousel, we don't need to do the closest here.
-        const $activeSlide = $carouselSlides.querySelector("[data-active]");
+        const $activeSlide = $slides.querySelector("[data-active]");
 
         let newIdx = offset + [...$slides.children].indexOf($activeSlide);
 
@@ -44,8 +43,7 @@ $buttons.forEach(button => {
         $activeSlide.removeAttribute("data-active");
         $slides.children[newIdx].setAttribute("data-active", "");
     });
-})
+});
 
-initialize();
-// document.addEventListener("DOMContentLoaded", initialize);
+document.addEventListener("DOMContentLoaded", initialize);
 // <script src="script.js" defer>... defer waits for the html to fully load before running script.
